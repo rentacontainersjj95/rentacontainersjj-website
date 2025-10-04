@@ -18,7 +18,7 @@ export default function SalePurchaseTitle() {
         transition={{ duration: 0.8 }}
         className="relative z-10 text-3xl md:text-5xl font-bold text-white text-center"
       >
-        Venta & Compra de Contenedores
+        Compra y Venta de Contenedores
       </motion.h1>
     </section>
   );
