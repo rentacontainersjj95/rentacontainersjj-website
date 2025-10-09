@@ -6,7 +6,7 @@ export default function TopBar() {
   const contactInfo = {
     phone: "+57 310 404 0273",
     email: "gerencia@rentacontainersjj.com",
-    location: "Barranquilla, Colombia",
+    location: "Calle 69 No. Via 40 - 431 - Barranquilla",
     socialMedia: {
       instagram: "https://www.instagram.com/contenedores_colombia/",
       facebook: "https://www.facebook.com/rentacontainers"
