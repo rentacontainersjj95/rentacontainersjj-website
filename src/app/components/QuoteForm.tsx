@@ -15,7 +15,7 @@ export default function QuoteForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const phoneNumber = "+573104040273"; // tu número de WhatsApp
+    const phoneNumber = "+573104040273";
     const message = `Cotización Rápida:
 Tamaño: ${size}
 Tipo de Contenedor: ${containerType}
@@ -24,30 +24,24 @@ Nombre: ${name}
 WhatsApp: ${whatsapp}
 Email: ${email}
 Tipo de Operación: ${operationType}
-Transporte: ${transport}`;
+`;
 
-    const url = `https://wa.me/${phoneNumber.replace(
-      /[^0-9]/g,
-      ""
-    )}?text=${encodeURIComponent(message)}`;
-
+    const url = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg flex flex-col gap-4"
+      className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg flex flex-col gap-4 text-gray-900"
     >
-      <h2 className="text-2xl font-bold text-gray-800 text-center">
-        Cotización Rápida
-      </h2>
+      <h2 className="text-2xl font-bold text-center">Cotización Rápida</h2>
 
       {/* Tamaño */}
       <select
         value={size}
         onChange={(e) => setSize(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900"
       >
         <option>10 pies</option>
         <option>20 pies</option>
@@ -61,7 +55,7 @@ Transporte: ${transport}`;
       <select
         value={containerType}
         onChange={(e) => setContainerType(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900"
       >
         <option>Estándar</option>
         <option>Cubo Alto</option>
@@ -75,7 +69,7 @@ Transporte: ${transport}`;
       <select
         value={condition}
         onChange={(e) => setCondition(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900"
       >
         <option>nuevo</option>
         <option>usado</option>
@@ -88,7 +82,7 @@ Transporte: ${transport}`;
         placeholder="Nombre"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900 placeholder-gray-500"
         required
       />
 
@@ -98,7 +92,7 @@ Transporte: ${transport}`;
         placeholder="Número de WhatsApp"
         value={whatsapp}
         onChange={(e) => setWhatsapp(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900 placeholder-gray-500"
         required
       />
 
@@ -108,54 +102,24 @@ Transporte: ${transport}`;
         placeholder="Correo Electrónico"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2"
+        className="w-full border border-gray-300 rounded px-3 py-2 bg-white text-gray-900 placeholder-gray-500"
       />
 
       {/* Operación */}
-      <div className="flex gap-4">
-        <label className="flex items-center gap-1">
-          <input
-            type="radio"
-            name="operationType"
-            value="Comprar"
-            checked={operationType === "Comprar"}
-            onChange={(e) => setOperationType(e.target.value)}
-          />
-          Comprar
-        </label>
-
-        <label className="flex items-center gap-1">
-          <input
-            type="radio"
-            name="operationType"
-            value="Alquilar"
-            checked={operationType === "Alquilar"}
-            onChange={(e) => setOperationType(e.target.value)}
-          />
-          Alquilar
-        </label>
-
-        <label className="flex items-center gap-1">
-          <input
-            type="radio"
-            name="operationType"
-            value="Ambos"
-            checked={operationType === "Ambos"}
-            onChange={(e) => setOperationType(e.target.value)}
-          />
-          Ambos
-        </label>
-
-        <label className="flex items-center gap-1">
-          <input
-            type="radio"
-            name="operationType"
-            value="Transporte"
-            checked={operationType === "Transporte"}
-            onChange={(e) => setOperationType(e.target.value)}
-          />
-          Transporte
-        </label>
+      <div className="flex flex-wrap gap-4 text-gray-900">
+        {["Comprar", "Alquilar", "Ambos", "Transporte"].map((type) => (
+          <label key={type} className="flex items-center gap-1">
+            <input
+              type="radio"
+              name="operationType"
+              value={type}
+              checked={operationType === type}
+              onChange={(e) => setOperationType(e.target.value)}
+              className="text-red-500 focus:ring-red-500"
+            />
+            {type}
+          </label>
+        ))}
       </div>
 
       <button
